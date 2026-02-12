@@ -1,0 +1,42 @@
+body {
+  font-family: 'Minecraft', monospace;
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  padding: 20px;
+  background: #0d0d0d;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #00ff00;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button {
+  background: #00ff00;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00cc00;
+}
