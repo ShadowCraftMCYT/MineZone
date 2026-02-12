@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title>Գրանցում - MineZone</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="MineZone Logo" class="logo">
+  </header>
+  <main>
+    <h1>Գրանցվել MineZone</h1>
+    <form id="registerForm">
+      <input type="email" id="email" placeholder="Էլ․ փոստ" required>
+      <input type="password" id="password" placeholder="Գաղտնաբառ" required>
+      <button type="submit">Գրանցվել</button>
+    </form>
+    <p>Առկա հաշիվ ունեք? <a href="login.html">Մուտք</a></p>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBII94TIDrZUr-EN6sO4b53Cw92MghgBkY",
+      authDomain: "minezone-343f0.firebaseapp.com",
+      projectId: "minezone-343f0",
+      storageBucket: "minezone-343f0.firebasestorage.app",
+      messagingSenderId: "769030906934",
+      appId: "1:769030906934:web:619443273c1bebeee52497"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const registerForm = document.getElementById('registerForm');
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        alert('Գրանցումը հաջողվեց: Բարի գալուստ ' + userCredential.user.email);
+        window.location.href = 'index.html';
+      } catch (error) {
+        alert('Սխալ՝ ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
